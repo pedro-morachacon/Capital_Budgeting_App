@@ -1,10 +1,6 @@
-import json
-
 import gspread
-from flask import Flask, abort, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request
 from google.oauth2.service_account import Credentials
-
-# from googleapiclient.discovery import build
 
 app = Flask(__name__)
 
@@ -36,9 +32,9 @@ def root():
 
 @app.route("/calculate", methods=["POST"])
 def calculate():
-    data = request.get_json()  # Assuming JSON data is sent from the frontend
-    # equip.update(data)  # Update the equip dictionary with received data
-    result = {"status": "success", "message": "Data received and saved successfully!"}
+    # Transform JSON data sent from the frontend
+    # ---------------------------------------------
+    data = request.get_json()
     equipment_name = data.get("equipment_name")
     equipment_cost = float(data.get("equipment_cost"))
     modifications_cost = float(data.get("modifications_cost"))
@@ -66,10 +62,6 @@ def calculate():
     # Last PV Column number in worksheet to add paste range
     LastPVColumn = 5 + terminal_use_years
 
-    # scope = [
-    #     "https://www.googleapis.com/auth/spreadsheets",
-    #     "https://www.googleapis.com/auth/drive",
-    # ]
     scope = [
         "https://www.googleapis.com/auth/spreadsheets.readonly",
         "https://spreadsheets.google.com/feeds",
@@ -78,31 +70,36 @@ def calculate():
         "https://www.googleapis.com/auth/drive.file",
         "https://www.googleapis.com/auth/drive",
     ]
-
+    # Open Credentials to work on Google Sheets
+    # ----------------------------------------------------
     creds = Credentials.from_service_account_file("creds.json", scopes=scope)
-
     client = gspread.authorize(creds)
-    # service = build('sheets', 'v4', credentials=creds)
 
-    # [print(client.list_spreadsheet_files(title=None, folder_id=None))]
-
-    # [{'id': '1hCaX_ivJWCxFM-gCxCnDtLGA3ecvY1cFO637MBCBv54', 'name': 'CapitalBudgeting', 'createdTime'::17:02.422Z'}, {'id': '1AWnmXUlOas6yNY9MCB-AwwVK4qp6fmbhQqBPlQwvv8M', 'name': 'CapitalBudgeting', '2024-03-19T13:07:01.665Z'}, {'id': '1NF13rWClaOl5B5hJrEvXPHIlGWv77FwOajEDQ8DrFsA', 'name': 'CapitodifiedTime': '2024-03-19T13:05:16.176Z'}, {'id': '1DVi9WAp6Bj-R5KVzmYlU1PmL1fEKOkA7fD-xcP49SE8', 6T14:05:58.700Z', 'modifiedTime': '2024-03-19T12:50:55.105Z'}]
-
+    # Open Google Sheets
+    # ------------------------------------------
     sp = client.open("CapitalBudgeting")
     sh = sp.worksheet("CapitalBudget")
-    # sh.batch_clear([convert_to_A1_notation(1, 7, 36, sh.column_count + 1)])
+
+    # Clear previous ranges
+    # --------------------------
     sh.copy_range(
         convert_to_A1_notation(3, 3, 35, 3),
         convert_to_A1_notation(3, 7, 35, sh.column_count),
         paste_type="PASTE_NORMAL",
         paste_orientation="NORMAL",
     )
+
+    # Extend Cashflow range
+    # --------------------------
     sh.copy_range(
         convert_to_A1_notation(3, 6, 25, 6),
         convert_to_A1_notation(3, 7, 25, LastCashflowColumn),
         paste_type="PASTE_NORMAL",
         paste_orientation="NORMAL",
     )
+
+    # Extend PV range
+    # --------------------------
     sh.copy_range(
         convert_to_A1_notation(29, 6, 35, 6),
         convert_to_A1_notation(29, 7, 35, LastPVColumn),
@@ -110,10 +107,7 @@ def calculate():
         paste_orientation="NORMAL",
     )
 
-    sh.batch_clear([convert_to_A1_notation(1, LastPVColumn, 25, LastPVColumn)])
-
-    print(f"Capital Budgeting for {equipment_name} Example")
-    #  Page Title
+    #  Page Updates
     # --------------------------
     sh.batch_update(
         [
@@ -160,4 +154,4 @@ def calculate():
 
 # To run flask function.
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
