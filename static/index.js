@@ -21,14 +21,10 @@ document.addEventListener("DOMContentLoaded", function () {
       body: JSON.stringify(data),
     })
       .then(() => {
-        // reload the iframe to try to reload/refresh
-        var iframe = document.getElementById("google-sheets-iframe");
-        iframe.src = iframe.src;
         // Redirect to the root page after submission
         window.location.href = "/";
         // reload the iframe to try to reload/refresh
-        var iframe = document.getElementById("google-sheets-iframe");
-        iframe.src = iframe.src;
+        window.location.reload(true);
       })
       .catch((error) => {
         console.error("Error:", error);
