@@ -21,13 +21,21 @@ document.addEventListener("DOMContentLoaded", function () {
       body: JSON.stringify(data),
     })
       .then(() => {
-        // Redirect to the root page after submission
-        window.location.href = "/";
-        // reload the iframe to try to reload/refresh
-        window.location.reload(true);
+        // Wait for 4 seconds
+        setTimeout(function () {
+          // reload the iframe to try to reload/refresh
+          var iframe = document.getElementById("google-sheets-iframe");
+          iframe.src = iframe.src;
+        }, 4000);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
   }
+});
+// listen for clicking iframe to open in new window
+document.getElementById("google-sheets").addEventListener("click", function () {
+  window.open(
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vT5uLKvV_zEu_Bzs8rxI9bN0LbIb66Z7fO4ySPGSsX2pS8X6rTnDaST17c2__AA7uGQUMdmkY15ZxGM/pubhtml?gid=0&single=true"
+  );
 });

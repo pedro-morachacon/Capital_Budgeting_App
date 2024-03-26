@@ -10,136 +10,128 @@
 <body>
 <div class="container">
   <h1 class="mt-5 mb-4">Capital Budgeting Present Value Calculator</h1>
-  <form id="capital-budget-form">
-    <!-- Equipment Information -->
-    <h3 class="mt-5 mb-3">Equipment Information</h3>
-    <div class="mb-3">
-      <label for="equipment-name" class="form-label">Equipment Name</label>
-      <input type="text" class="form-control" id="equipment-name" name="equipment_name" required value="Work Truck">
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label for="equipment-cost" class="form-label">Equipment Cost</label>
-            <input type="number" class="form-control" id="equipment-cost" name="equipment_cost" required min="1" value="35625">
-          </div>
+  <div class="row">
+    <div class="col-sm-3 text-bg-secondary">
+      <form id="capital-budget-form">
+        <!-- Equipment Information -->
+        
+        <h5 class="mt-5 mb-3">Equipment Information</h5>
+        
+        <div class="mb-3">
+          <label for="equipment-name" class="form-label">Equipment Name</label>
+          <input type="text" class="form-control" id="equipment-name" name="equipment_name" required value="Work Truck">
         </div>
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label for="modifications-cost" class="form-label">Modifications Cost</label>
-            <input type="number" class="form-control" id="modifications-cost" name="modifications_cost" required min="0"  value="14580">
-          </div>
+  
+        <div class="mb-3">
+          <label for="equipment-cost" class="form-label">Equipment Cost</label>
+          <input type="number" class="form-control" id="equipment-cost" name="equipment_cost" required min="1" value="35625">
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label for="installation-cost" class="form-label">Installation Cost</label>
-            <input type="number" class="form-control" id="installation-cost" name="installation_cost" required min="0"  value="0">
-          </div>
+
+    
+        <div class="mb-3">
+          <label for="modifications-cost" class="form-label">Equipment Modifications Cost</label>
+          <input type="number" class="form-control" id="modifications-cost" name="modifications_cost" required min="0"  value="14580">
         </div>
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label for="registration-cost" class="form-label">Registration, permits and other Costs</label>
-            <input type="number" class="form-control" id="registration-cost" name="registration_cost" required min="0"  value="1200">
-          </div>
+
+
+        <div class="mb-3">
+          <label for="installation-cost" class="form-label">Equipment Installation Cost</label>
+          <input type="number" class="form-control" id="installation-cost" name="installation_cost" required min="0"  value="0">
         </div>
-        <div class="col-md-6">
-            <div class="mb-3">
-              <label for="sales-tax-amount" class="form-label">Sales Tax Amount</label>
-              <input type="number" class="form-control" id="sales-tax-amount" name="sales_tax_amount" required min="0" step="1" value="2494">
-            </div>
-          </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
+
+
+        <div class="mb-3">
+          <label for="registration-cost" class="form-label">Equipment Registration, permits and other Costs</label>
+          <input type="number" class="form-control" id="registration-cost" name="registration_cost" required min="0"  value="1200">
+        </div>
+
+
+        <div class="mb-3">
+          <label for="sales-tax-amount" class="form-label">Equipment Sales Tax Amount</label>
+          <input type="number" class="form-control" id="sales-tax-amount" name="sales_tax_amount" required min="0" step="1" value="2494">
+        </div>
+
+
         <div class="mb-3">
           <label for="equipment-life" class="form-label">Equipment Life (years)</label>
           <input type="number" class="form-control" id="equipment-life" name="equipment_life" required min="1" value="5">
         </div>
-      </div>
-      <div class="col-md-6">
+
+
         <div class="mb-3">
           <label for="terminal-use-years" class="form-label">Expected Years of Use (years)</label>
           <input type="number" class="form-control" id="terminal-use-years" name="terminal_use_years" required min="1" value="4">
         </div>
-      </div>
-      <div class="col-md-6">
+
+
         <div class="mb-3">
           <label for="terminal-residual-value" class="form-label">Expected Terminal Residual Value</label>
           <input type="number" class="form-control" id="terminal-residual-value" name="terminal_residual_value" required min="0" value="10923">
         </div>
-      </div>
-    </div>
-    <!-- Operational Information -->
-    <h3 class="mt-5 mb-3">First Year Operational Information</h3>
-    <div class="row">
-      <div class="col-md-6">
+
+        <!-- Operational Information -->
+        <h5 class="mt-5 mb-3">First Year Operational Information</h5>
+
         <div class="mb-3">
           <label for="direct-revenue" class="form-label">Direct Revenue</label>
           <input type="number" class="form-control" id="direct-revenue" name="direct_revenue" required min="0" value="88500">
         </div>
-      </div>
-      <div class="col-md-6">
+
+    
         <div class="mb-3">
           <label for="operator-wages" class="form-label">Operator Wages</label>
           <input type="number" class="form-control" id="operator-wages" name="operator_wages" required min="1" value="44580">
         </div>
-      </div>
-  </div>
-    <div class="row">
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label for="fuel-cost" class="form-label">Energy/Fuel Costs</label>
-            <input type="number" class="form-control" id="fuel-cost" name="fuel_cost" required min="1" value="13416">
-          </div>
+
+
+        <div class="mb-3">
+          <label for="fuel-cost" class="form-label">Energy/Fuel Costs</label>
+          <input type="number" class="form-control" id="fuel-cost" name="fuel_cost" required min="1" value="13416">
         </div>
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label for="equipment-maintenance" class="form-label">Equipment Maintenance</label>
-            <input type="number" class="form-control" id="equipment-maintenance" name="equipment_maintenance" required min="0" value="4050">
-          </div>
+
+
+        <div class="mb-3">
+          <label for="equipment-maintenance" class="form-label">Equipment Maintenance</label>
+          <input type="number" class="form-control" id="equipment-maintenance" name="equipment_maintenance" required min="0" value="4050">
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label for="other-expenses" class="form-label">Other Expenses</label>
-            <input type="number" class="form-control" id="other-expenses" name="other_expenses" required min="0" value="2488">
-          </div>
+
+
+        <div class="mb-3">
+          <label for="other-expenses" class="form-label">Other Expenses</label>
+          <input type="number" class="form-control" id="other-expenses" name="other_expenses" required min="0" value="2488">
         </div>
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label for="corp-tax-rate" class="form-label">Corp Tax Rate (%)</label>
-            <input type="number" class="form-control" id="corp-tax-rate" name="corp_tax_rate" required min="0" step="0.01" value="22.00">
-          </div>
+
+
+        <div class="mb-3">
+          <label for="corp-tax-rate" class="form-label">Corp Tax Rate (%)</label>
+          <input type="number" class="form-control" id="corp-tax-rate" name="corp_tax_rate" required min="0" step="0.01" value="22.00">
         </div>
-    </div>
-    <!-- Financial Information -->
-    <h3 class="mt-5 mb-3">Financial Information</h3>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="mb-3">
-              <label for="cons-index-rate" class="form-label">Consumer Index Annual Increase Rate (%)</label>
-              <input type="number" class="form-control" id="cons-index-rate" name="cons_index_rate" required min="0" step="0.01" value="5.00">
-            </div>
-          </div>
-      <div class="col-md-6">
+
+        <!-- Financial Information -->
+        <h5 class="mt-5 mb-3">Financial Information</h5>
+
+        <div class="mb-3">
+          <label for="cons-index-rate" class="form-label">Consumer Index Annual Increase Rate (%)</label>
+          <input type="number" class="form-control" id="cons-index-rate" name="cons_index_rate" required min="0" step="0.01" value="5.00">
+        </div>
+
+
         <div class="mb-3">
           <label for="discount-rate" class="form-label">Discount Rate (%)</label>
           <input type="number" class="form-control" id="discount-rate" name="discount_rate" required min="0" step="0.01" value="14.00">
         </div>
-      </div>
-    </div>
 
-    <!-- Submit Button -->
-    <button type="submit" class="btn btn-primary">Calculate</button>
-  </form>
-  
-  <!-- Google Sheets Embedded Window -->
-  <div class="row">
-    <div class="col-md-12">
-      <iframe id="google-sheets-iframe" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT5uLKvV_zEu_Bzs8rxI9bN0LbIb66Z7fO4ySPGSsX2pS8X6rTnDaST17c2__AA7uGQUMdmkY15ZxGM/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false" style="width: 100%; height: 100%;" title="capital-budgeting-google-sheets"></iframe>
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Calculate</button>
+      </form>
+    </div>
+    <div class="col-xl-9">
+      <h5 class="mt-5">Example of making Google Sheet capital budgeting spreadsheet changes.</h5>
+      <p class="mb-3">It will take about 4 seconds for the frame to refresh. If you reload the webpage the Google Sheet changes will show, but your form entries will revert back to the placeholder values.</p>
+      <div class="mt-5" id="google-sheets" style="width: 100%; height: 850px;">
+        <!-- Google Sheets Embedded Window -->
+        <iframe id="google-sheets-iframe" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT5uLKvV_zEu_Bzs8rxI9bN0LbIb66Z7fO4ySPGSsX2pS8X6rTnDaST17c2__AA7uGQUMdmkY15ZxGM/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false" style="width: 100%; height: 100%;" title="capital-budgeting-google-sheets"></iframe>
+      </div>
     </div>
   </div>
 </div>
