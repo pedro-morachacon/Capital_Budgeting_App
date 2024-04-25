@@ -1,5 +1,6 @@
 creds.json
-__pycache__
-venv
+__pycache__/*
+venv/*
 .vscode
 .hintrc
+.mypy_cache/*
