@@ -1,1 +1,4 @@
-
+venv/
+.vscode/
+creds.json
+__pycache__
